@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { conflicts } = require('yargs');
 
 const getNotes = function notes(){
     return 'Your notes....';
@@ -15,7 +16,10 @@ const addNote = function (title, body){
             title: title,
             body: body
         })
-        saveNotes(notes)
+        saveNotes(notes);
+        console.log("New note added");
+    }else{
+        console.log('Note title taken');
     }
 
 
@@ -25,6 +29,12 @@ const addNote = function (title, body){
     });
     saveNotes(notes);
 }
+
+const removeNote = function(title){
+    const notes
+}
+
+
 
 const saveNotes = function(notes){
     const dataJSON = JSON.stringify(notes);
@@ -42,7 +52,9 @@ const loadNotes = function(){
     }
 }
 
+
 module.exports = {
     getNotes: getNotes,
-    addNote: addNote
+    addNote: addNote,
+    removeNote: removeNote
 }
